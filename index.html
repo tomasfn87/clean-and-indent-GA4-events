@@ -70,7 +70,7 @@
         let cleanText = ''
         cleanText = decodeURIComponent(text)
         cleanText = cleanText.replaceAll(REEventName, '\n\nen=')
-        cleanText = cleanText.replaceAll(REEventParameter, '\n &')
+        cleanText = cleanText.replaceAll(REEventParameter, '\n- &')
         return removeFirstLineBreaks(cleanText)
     }
 

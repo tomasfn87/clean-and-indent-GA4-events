@@ -55,13 +55,13 @@
         let cleanText = ''
         let position
         for (i in text) {
-            if (text[i] != '' || text[i] != '\n') {
+            if (text[i] != '\n') {
                 position = i
                 break
             }
         }
-        cleanText += text.slice(position+2, text.length)
-        return cleanText
+        cleanText += text.slice(position, text.length)
+        return cleanText.trim()
     }
 
     const cleanAndIndent = (text) => {

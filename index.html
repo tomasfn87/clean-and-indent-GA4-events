@@ -69,7 +69,7 @@
         const REEventParameter = /&/g
         let cleanText = ''
         cleanText = decodeURIComponent(text)
-        cleanText = cleanText.replaceAll(REEventName, '\n\nen=')
+        cleanText = cleanText.replaceAll(REEventName, '\nen=')
         cleanText = cleanText.replaceAll(REEventParameter, '\n- &')
         return removeFirstLineBreaks(cleanText)
     }

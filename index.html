@@ -16,11 +16,15 @@
             color: rgb(253, 143, 143);
             font-family: sans-serif;
         }
+        a {
+            text-decoration: none;
+        }
         #text-to-clean {
-            background-color: #111;
+            background-color: #1c1c1c;
             color: #FFF;
             width: 90vw;
             height: 85vh;
+            border: dashed 3px #fff;
         }
         #clean-text {
             background-color: darkred;
@@ -28,42 +32,53 @@
             position: relative;
             float: left;
         }
+        main:hover #text-to-clean {
+            background-color: #111;
+            border: solid 3px darkred;
+        }
+        #clean-text:hover {
+            background-color: rgb(250, 102, 139);
+            color: #000;
+        }
     </style>
 </head>
 <body>
-<h3></h3>
-<textarea id="text-to-clean"></textarea>
-<br>
-<button id="clean-text" onclick="cleanText()">Decode and Indent</button>
+    <a href="https://github.com/tomasfn87/clean-and-indent-GA4-events" target="_blank"><h3></h3></a>
+    <main>
+        <textarea id="text-to-clean" title="GA4 request payload to be decoded and indented" placeholder="Paste your Google Analytics 4 encoded request payload here"></textarea>
+        <br>
+        <button id="clean-text" onclick="cleanText()">Decode and Indent</button>
+    </main>
 </body>
 <script>
-const removeFirstLineBreaks = (text) => {
-    let cleanText = ''
-    let position
-    for (i in text) {
-        if (text[i] != '' || text[i] != '\n') {
-            position = i
-            break
+    const removeFirstLineBreaks = (text) => {
+        let cleanText = ''
+        let position
+        for (i in text) {
+            if (text[i] != '' || text[i] != '\n') {
+                position = i
+                break
+            }
         }
+        cleanText += text.slice(position+2, text.length)
+        return cleanText
     }
-    cleanText += text.slice(position+2, text.length)
-    return cleanText
-}
 
-const cleanAndIndent = (text) => {
-    const REEventName = /en=/g
-    const REEventParameter = /&/g
-    let cleanText = ''
-    cleanText = decodeURIComponent(text)
-    cleanText = cleanText.replaceAll(REEventName, '\n\nen=')
-    cleanText = cleanText.replaceAll(REEventParameter, '\n &')
-    return removeFirstLineBreaks(cleanText)
-}
+    const cleanAndIndent = (text) => {
+        const REEventName = /en=/g
+        const REEventParameter = /&/g
+        let cleanText = ''
+        cleanText = decodeURIComponent(text)
+        cleanText = cleanText.replaceAll(REEventName, '\n\nen=')
+        cleanText = cleanText.replaceAll(REEventParameter, '\n &')
+        return removeFirstLineBreaks(cleanText)
+    }
 
-const cleanText = () => {
-    textarea = document.getElementById('text-to-clean')
-    textarea.value = cleanAndIndent(textarea.value)
-}
-(document.querySelector('h3').innerText = document.getElementsByTagName('title')[0].innerText)()
+    const cleanText = () => {
+        textarea = document.getElementById('text-to-clean')
+        textarea.value = cleanAndIndent(textarea.value)
+    }
+
+    (document.querySelector('h3').innerText = document.getElementsByTagName('title')[0].innerText)()
 </script>
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decode and Indent GA4 event request payload</title>
+    <style>
+        body {
+            background-color: #222;
+            height: 80vh;
+            color: #CCC;
+        }
+        #text-to-clean {
+            background-color: #111;
+            color: #FFF;
+            width: 90vw;
+            height: 60vh;
+        }
+        #clean-text {
+            background-color: darkred;
+            color: #FFF;
+            position: relative;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<textarea id="text-to-clean"></textarea>
+<br>
+<button id="clean-text" onclick="cleanText()">Clean and Indent</button>
+    
+</body>
+<script>
+const removeFirstLineBreaks = (text) => {
+    let cleanText = ''
+    let position
+    for (i in text) {
+        if (text[i] != '' || text[i] != '\n') {
+            position = i
+            break
+        }
+    }
+    cleanText += text.slice(position+2, text.length)
+    return cleanText
+}
+
+const cleanAndIndent = (text) => {
+    const REEventName = /en=/g
+    const REEventParameter = /&/g
+    let cleanText = ''
+    cleanText = decodeURIComponent(text)
+    cleanText = cleanText.replaceAll(REEventName, '\n\nen=')
+    cleanText = cleanText.replaceAll(REEventParameter, '\n &')
+    return removeFirstLineBreaks(cleanText)
+}
+
+const cleanText = () => {
+    textarea = document.getElementById('text-to-clean')
+    textarea.value = cleanAndIndent(textarea.value)
+}
+</script>
+</html>

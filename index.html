@@ -11,6 +11,9 @@
             height: 100vh;
             color: #CCC;
         }
+        h3 {
+            color: rgb(253, 143, 143);
+        }
         #text-to-clean {
             background-color: #111;
             color: #FFF;
@@ -26,6 +29,7 @@
     </style>
 </head>
 <body>
+<h3></h3>
 <textarea id="text-to-clean"></textarea>
 <br>
 <button id="clean-text" onclick="cleanText()">Decode and Indent</button>
@@ -58,5 +62,6 @@ const cleanText = () => {
     textarea = document.getElementById('text-to-clean')
     textarea.value = cleanAndIndent(textarea.value)
 }
+(document.querySelector('h3').innerText = document.getElementsByTagName('title')[0].innerText)()
 </script>
 </html>

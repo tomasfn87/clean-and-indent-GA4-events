@@ -88,6 +88,8 @@
     </main>
 </body>
 <script>
+    document.querySelector('h4').innerText = document.querySelector('title').innerText
+
     const removeFirstLineBreaks = (text) => {
         let cleanText = ''
         let position
@@ -115,7 +117,5 @@
         const textarea = document.getElementById('text-to-clean')
         textarea.value = cleanAndIndent(textarea.value)
     }
-
-    (document.querySelector('h4').innerText = document.querySelector('title').innerText)()
 </script>
 </html>

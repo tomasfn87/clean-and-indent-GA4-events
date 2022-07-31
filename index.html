@@ -87,7 +87,7 @@
     <br>
     <textarea id="text-to-clean" title="Paste a Google Analytics 4 event request payload to be decoded and indented here"
     alt="Paste a Google Analytics 4 event request payload to be decoded and indented here"
-    placeholder="Paste a Google Analytics 4 event request payload and press the Decode and Indent button">Decode%20and%20Indent,%20&%20this%20text.</textarea>
+    placeholder="Paste a Google Analytics 4 event request payload and press the Decode and Indent button"></textarea>
   </main>
 </body>
 <script>
@@ -112,6 +112,7 @@
   }
   const button = document.getElementById('clean-text')
   const text = document.getElementById('text-to-clean')
+  text.value = 'Decode%20and%20Indent,%20&%20this%20text.'
   button.addEventListener('click', () => {
     text.value = cleanAndIndent(text.value)
   })

@@ -112,7 +112,7 @@
   }
   const button = document.getElementById('clean-text')
   const text = document.getElementById('text-to-clean')
-  text.value = 'Decode%20and%20Indent,%20&%20this%20text.'
+  text.value = 'Decode&%20indent%20this%20text.'
   button.addEventListener('click', () => {
     text.value = cleanAndIndent(text.value)
   })

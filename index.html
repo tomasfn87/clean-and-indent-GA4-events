@@ -42,14 +42,13 @@
       margin: 0 .45em 0 0;
       font-weight: 600;
     }
+    button:hover {
+      color: #fff;
+    }
     main:hover #text-to-clean {
       background-color: #111;
       color: #fff;
       border: solid 2px #B7810A;
-    }
-    button:hover {
-      color: #ddd;
-      
     }
     #clean-text { background-color: rgb(0, 100, 0); }
     #clean-text:hover { background-color: rgb(0, 125, 0); box-shadow: 2px 2px 17px rgb(0, 30, 0); }
@@ -132,19 +131,19 @@
   decodeAndIndentButton.addEventListener('click', () => {
     text.value = cleanAndIndent(text.value)
     decodeAndIndentButton.style.border = 'solid 2px rgba(0, 0, 0, 0)'
-    decodeAndIndentButton.style.color = '#aaa'
+    decodeAndIndentButton.style.boxShadow = 'none'
   })
   const sampleButton = document.getElementById('sample-text')
   sampleButton.addEventListener('click', () => {
     text.value = 'Decode&%20indent%20this%20text.'
     decodeAndIndentButton.style.border = 'solid 2px rgb(0, 150, 0)'
-    decodeAndIndentButton.style.color = '#fff'
+    decodeAndIndentButton.style.boxShadow = '0 2px 10px rgb(0, 125, 0)'
   })
   const eraseButton = document.getElementById('erase-text')
   eraseButton.addEventListener('click', () => {
     text.value = ''
     decodeAndIndentButton.style.border = 'solid 2px rgba(0, 0, 0, 0)'
-    decodeAndIndentButton.style.color = '#aaa'
+    decodeAndIndentButton.style.boxShadow = 'none'
   })
 </script>
 </html>

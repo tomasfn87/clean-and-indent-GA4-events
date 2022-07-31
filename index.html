@@ -39,13 +39,15 @@
     #text-to-clean::-webkit-scrollbar {
       display: none;
     }
-    #clean-text {
+    button {
       background-color: rgb(100, 0, 0);
       color: #aaa;
       float: left;
       padding: 5px 12px;
       border: none;
+      margin: 0 .45em 0 0;
       font-weight: 600;
+
     }
     main:hover #text-to-clean {
       background-color: #111;
@@ -53,7 +55,7 @@
       border: solid 2px darkred;
       box-shadow: 2px 2px 17px #310000;
     }
-    #clean-text:hover {
+    button:hover {
       background-color: darkred;
       color: #ddd;
       box-shadow: 2px 2px 17px #310000;
@@ -78,6 +80,12 @@
   <main>
     <span>
       <button id="clean-text" title="Click to decode and indent the Google Analytics 4 request payload above">Decode and Indent</button>
+    </span>
+    <span>
+      <button id="sample-text" title="Click to add a sample Google Analytics 4 request payload above">Load Sample</button>
+    </span>
+    <span>
+      <button id="erase-text" title="Click to erase the text above">Erase</button>
     </span>
     <span id="ga-logo">
       <a href="https://analytics.google.com/" target="_blank" title="Google Analytics">
@@ -110,11 +118,18 @@
     }
     return text.slice(position, text.length).trim()
   }
-  const button = document.getElementById('clean-text')
   const text = document.getElementById('text-to-clean')
-  text.value = 'Decode&%20indent%20this%20text.'
-  button.addEventListener('click', () => {
+  const decodeAndIndentButton = document.getElementById('clean-text')
+  decodeAndIndentButton.addEventListener('click', () => {
     text.value = cleanAndIndent(text.value)
+  })
+  const sampleButton = document.getElementById('sample-text')
+  sampleButton.addEventListener('click', () => {
+    text.value = 'Decode&%20indent%20this%20text.'
+  })
+  const eraseButton = document.getElementById('erase-text')
+  eraseButton.addEventListener('click', () => {
+    text.value = ''
   })
 </script>
 </html>

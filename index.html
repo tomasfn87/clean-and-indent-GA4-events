@@ -60,8 +60,8 @@
     }
     #clean-text { background-color: rgb(0, 100, 0); }
     #clean-text:hover { background-color: rgb(0, 125, 0); box-shadow: 2px 2px 17px rgb(0, 30, 0); }
-    #sample-text { background-color: rgb(30, 70, 150); }
-    #sample-text:hover { background-color: rgb(40, 90, 195); box-shadow: 2px 2px 17px rgb(18, 40, 84); }
+    #sample-text, #beautify-text { background-color: rgb(30, 70, 150); }
+    #sample-text:hover, #beautify-text:hover { background-color: rgb(40, 90, 195); box-shadow: 2px 2px 17px rgb(18, 40, 84); }
     #erase-text { background-color: rgb(100, 0, 0); }
     #erase-text:hover { background-color: rgb(140, 0, 0); box-shadow: 2px 2px 17px #310000; }
     #ga-logo svg {
@@ -96,6 +96,9 @@
       <button id="clean-text" title="Click to decode and indent the Google Analytics 4 request payload above">Decode and Indent</button>
     </span>
     <span>
+      <button id="beautify-text" title="Click to beautify the text above">Beautify</button>
+    </span>
+    <span>
       <button id="sample-text" title="Click to add a sample text above; it will be indented after the '&'">Load Sample</button>
     </span>
     <span>
@@ -121,7 +124,7 @@
 </body>
 <script>
   const cleanAndIndent = (text) => {
-    const REEventName = /en=/g
+    const REEventName = /en=|en: /g
     const REEventParameter = /&/g
     let cleanText = decodeURIComponent(text)
     cleanText = cleanText.replaceAll(REEventName, '\nen=')
@@ -138,12 +141,20 @@
     }
     return text.slice(position, text.length).trim()
   }
+  const beautify = (text) => {
+    const REEvents = /([a-z.]{2}[a-z.]*)(=)/g
+    return text.replaceAll(REEvents, '$1: ')
+  }
   const text = document.getElementById('text-to-clean')
   const decodeAndIndentButton = document.getElementById('clean-text')
   decodeAndIndentButton.addEventListener('click', () => {
     text.value = cleanAndIndent(text.value)
     decodeAndIndentButton.style.border = 'solid 2px rgba(0, 0, 0, 0)'
     decodeAndIndentButton.style.boxShadow = 'none'
+  })
+  const beautifyButton = document.getElementById('beautify-text')
+  beautifyButton.addEventListener('click', () => {
+    text.value = beautify(text.value)
   })
   const sampleButton = document.getElementById('sample-text')
   sampleButton.addEventListener('click', () => {

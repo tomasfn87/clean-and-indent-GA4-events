@@ -59,11 +59,13 @@
       border: solid 2px #B7810A;
     }
     #clean-text { background-color: rgb(0, 100, 0); }
-    #clean-text:hover { background-color: rgb(0, 125, 0); box-shadow: 2px 2px 17px rgb(0, 30, 0); }
-    #sample-text, #beautify-text { background-color: rgb(30, 70, 150); }
-    #sample-text:hover, #beautify-text:hover { background-color: rgb(40, 90, 195); box-shadow: 2px 2px 17px rgb(18, 40, 84); }
+    #clean-text:hover { background-color: rgb(0, 125, 0); box-shadow: 2px 2px 17px rgb(4, 130, 4); }
+    #sample-text { background-color: rgb(30, 70, 150); }
+    #beautify-text { background-color: rgb(124, 56, 17); }
+    #sample-text:hover { background-color: rgb(40, 90, 195); box-shadow: 2px 2px 17px rgb(18, 57, 136); }
+    #beautify-text:hover { background-color: rgb(205, 95, 31); box-shadow: 2px 2px 17px rgb(126, 53, 5); }
     #erase-text { background-color: rgb(100, 0, 0); }
-    #erase-text:hover { background-color: rgb(140, 0, 0); box-shadow: 2px 2px 17px #310000; }
+    #erase-text:hover { background-color: rgb(140, 0, 0); box-shadow: 2px 2px 17px #710505; }
     #ga-logo svg {
       opacity: 70%;
       position: relative;
@@ -155,8 +157,8 @@
     decodeAndIndentButton.style.border = 'solid 2px rgba(0, 0, 0, 0)'
     decodeAndIndentButton.style.boxShadow = 'none'
     if (!!text.value && text.value.match(REEvents) && !sampleUsed && !beautifyUsed) {
-      beautifyButton.style.border = 'solid 2px rgb(85, 130, 221)'
-      beautifyButton.style.boxShadow = '0 2px 10px rgb(0, 68, 102)'
+      beautifyButton.style.border = 'solid 2px rgb(205, 95, 31)'
+      beautifyButton.style.boxShadow = '0 2px 10px rgb(126, 53, 5)'
     }
   })
   const beautifyButton = document.getElementById('beautify-text')
@@ -172,7 +174,7 @@
     text.value = 'Decode&%20indent%20this%20text.'
     sampleUsed = true
     decodeAndIndentButton.style.border = 'solid 2px rgb(0, 150, 0)'
-    decodeAndIndentButton.style.boxShadow = '0 2px 10px rgb(0, 125, 0)'
+    decodeAndIndentButton.style.boxShadow = '0 2px 10px rgb(4, 130, 4)'
   })
   const eraseButton = document.getElementById('erase-text')
   eraseButton.addEventListener('click', () => {

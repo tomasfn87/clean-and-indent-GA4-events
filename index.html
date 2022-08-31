@@ -148,13 +148,13 @@
   const text = document.getElementById('text-to-clean')
   sampleUsed = false
   beautifyUsed = false
-  localStorage.setItem('clean_and_indent_old_value', text.value)
   const decodeAndIndentButton = document.getElementById('clean-text')
   decodeAndIndentButton.addEventListener('click', () => {
+    REEvents = /([a-z.]{2}[a-z.]*)(=)/g
     text.value = cleanAndIndent(text.value)
     decodeAndIndentButton.style.border = 'solid 2px rgba(0, 0, 0, 0)'
     decodeAndIndentButton.style.boxShadow = 'none'
-    if (!sampleUsed && !beautifyUsed && !!text.value) {
+    if (!!text.value && text.value.match(REEvents) && !sampleUsed && !beautifyUsed) {
       beautifyButton.style.border = 'solid 2px rgb(85, 130, 221)'
       beautifyButton.style.boxShadow = '0 2px 10px rgb(0, 68, 102)'
     }
